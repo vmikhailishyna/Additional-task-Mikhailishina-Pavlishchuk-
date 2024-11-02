@@ -15,6 +15,12 @@ def display_shop(shop: dict):
         print(f"{key}: {shop[key]}")
 
 
+def sorted_potion(dictionary_potions: dict):
+    sorted_potion = sorted(dictionary_potions.items(), key=lambda x: x[0])
+    convert_dict = dict(sorted_potion)
+    display_shop(convert_dict)
+
+
 potions_shop = {"Зілля здоров'я": 250,
                 "Драконячий тонік": 150,
                 "Зілля від кашлю": 50,
@@ -23,7 +29,7 @@ potions_shop = {"Зілля здоров'я": 250,
 
 
 while True:
-    action = input("Choice action: 1)Display shop; 2)Add new potion; 3)Update price; 4)Remove potion; 5)Exit \n Your choice is  ")
+    action = input("Choice action: 1)Display shop; 2)Add new potion; 3)Update price; 4)Remove potion; 5) Sort by alphabetical order 6)Exit \n Your choice is  ")
     if action.lower() == "display shop" or action.lower() == "1":
         display_shop(potions_shop)
     elif action.lower() == "add new potion" or action.lower() == "2":
@@ -37,6 +43,8 @@ while True:
     elif action.lower() == "update price" or action.lower() == "4":
         potion_name = input("Please, enter potion name which price you want to update: ")
         remove_potion(potions_shop, potion_name)
+    elif action.lower() == "sort" or action.lower() == "Sort by alphabetical order" or action == "5":
+        sorted_potion(potions_shop)
     elif action.lower() == "exit" or action.lower() == "5":
         break
     else:
