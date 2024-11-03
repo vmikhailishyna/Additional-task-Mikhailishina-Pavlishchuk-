@@ -22,6 +22,12 @@ def most_cheap(min_cost):
     print(f"{min_k}: {min_cost[min_k]}")
 
 
+def sorted_potion(dictionary_potions: dict):
+    sorted_potion = sorted(dictionary_potions.items(), key=lambda x: x[0])
+    convert_dict = dict(sorted_potion)
+    display_shop(convert_dict)
+
+
 potions_shop = {"Зілля здоров'я": 250,
                 "Драконячий тонік": 150,
                 "Зілля від кашлю": 50,
@@ -30,7 +36,8 @@ potions_shop = {"Зілля здоров'я": 250,
 
 
 while True:
-    action = input("Choice action: 1)Display shop; 2)Add new potion; 3)Update price; 4)Remove potion; 5)Min cost; 6)Max cost; 7)Exit \n Your choice is  ")
+    action = input("Choice action: 1)Display shop; 2)Add new potion; 3)Update price; 4)Remove potion; 5)Min cost; 6)Max cost; 7) Sort by alphabetical order 8)Exit \n Your choice is  ")
+
     if action.lower() == "display shop" or action.lower() == "1":
         display_shop(potions_shop)
     elif action.lower() == "add new potion" or action.lower() == "2":
@@ -48,7 +55,9 @@ while True:
         most_cheap(potions_shop)
     elif action.lower() == "max cost" or action.lower() == "6":
         most_expensive(potions_shop)
-    elif action.lower() == "exit" or action.lower() == "7":
+    elif action.lower() == "sort" or action.lower() == "Sort by alphabetical order" or action == "8":
+        sorted_potion(potions_shop)
+    elif action.lower() == "exit" or action.lower() == "8":
         break
     else:
         print("Incorrect choice! Try again")
